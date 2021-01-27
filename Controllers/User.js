@@ -18,7 +18,7 @@ function createNewUser(user){
 
 exports.newUser = function(req,res){
     if(createNewUser(req.body.UserName)){
-        res.send(`User, ${req.body.UserName.UserName}, was succesfully created.`);
+        res.send(`User, ${req.body.UserName.UserName}, was successfully created.`);
     }
 }
 

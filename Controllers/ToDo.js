@@ -44,7 +44,7 @@ exports.getToDoByID = function(req,res){
 
 exports.newToDo = function(req,res){
     //if passed in user is in the DB, get the information else create a new user.
-    userModel.find().where('username',req.body.UserName.UserName).count(function(err,count){
+    userModel.findOne({UserName: req.body.UserName.UserName}).count(function(err,count){
         if(err)
             return next(err);
 
@@ -68,7 +68,7 @@ exports.newToDo = function(req,res){
         if(err)
             return next(err);
         
-        res.send(`${newToDo.Title} was succesfully added to your ToDo list.`);
+        res.send(`${newToDo.Title} was successfully added to your ToDo list.`);
     });
 }
 
@@ -77,7 +77,7 @@ exports.updateToDo = function(req,res){
         if(err)
             return next(err);
         
-        res.send(`${req.body.Title} ToDo was updated succesfully.`);
+        res.send(`${req.body.Title} ToDo was updated successfully.`);
     });
 }
 
@@ -93,7 +93,7 @@ exports.deleteToDo = function(req,res){
             if(err)
                 return next(err);
             
-            res.send(`ToDo was deleted succesfully.`);
+            res.send(`ToDo was deleted successfully.`);
         });
     })
     
