@@ -1,11 +1,18 @@
+require('dotenv').config();
+
 const bodyParser = require('body-parser');
 const express = require('express');
 const todos = require('./routes/ToDo');
 const user = require('./routes/User');
 const app = express();
 
+const MONGODB_USER = process.env.MONGODB_USER;
+const MONGODB_KEY = process.env.MONGODB_PWD;
+const MONGODB_ClusterAddress = process.env.MONGODB_ClusterAddress;
+
 const mongoose = require('mongoose');
-const dev_url = 'mongodb+srv://test:test123@cluster0.kuij7.mongodb.net/ToDo?retryWrites=true&w=majority';
+const dev_url = `mongodb+srv://${MONGODB_USER}:${MONGODB_KEY}@${MONGODB_ClusterAddress}?retryWrites=true&w=majority`;
+
 mongoose.connect(dev_url);
 
 mongoose.Promise = global.Promise;
